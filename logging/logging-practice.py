@@ -2,7 +2,7 @@ import logging
 
 # configure logging, note only do this once
 # filemode "w" will overwrite everything 
-logging.basicConfig(level=logging.DEBUG, filename="log.log",filemode="w", 
+logging.basicConfig(level=logging.DEBUG, filename="logging/log.log",filemode="w", 
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
 x = 2
@@ -24,7 +24,7 @@ except ZeroDivisionError as e:
 logger = logging.getLogger(__name__) #create new logger, save to diff file
 
 #handler
-handler = logging.FileHandler('test.log')
+handler = logging.FileHandler('logging/test.log')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 
