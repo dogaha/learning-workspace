@@ -1,0 +1,22 @@
+# get active containers
+docker ps
+
+# docker file
+FROM node:12 #node js
+WORKDIR /app # location
+COPY 
+RUN
+
+# Docker and Kafka
+See /venv/docker-compose.yaml
+Docker Comand Line Interface (CLI)
+    docker exec -it kafka ...
+
+    #get all topics
+    docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+
+    #get info about topic orders
+    docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --describe --topic orders
+
+    #get info about all messages from topic orders
+    docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic orders --from-beginning
