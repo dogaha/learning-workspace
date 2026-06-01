@@ -2,7 +2,8 @@ creation:
 python -m venv .venv
 
 activation:
-.venv\Scripts\Activate.ps1
+.venv/Scripts/Activate.ps1 //Powershell
+source .venv/Scripts/activate // BASH
 
 save dependencies:
 pip freeze > reqiuirements.txt
