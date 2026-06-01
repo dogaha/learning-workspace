@@ -1,0 +1,23 @@
+# Use Docker's official Compose file for airflow
+BASH: curl -LfO 'https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml'
+
+# Create Required Directories and Env Files
+mkdir -p ./dags ./logs ./plugins ./config
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+
+# Initialize the database (ONLY FOR FIRST TIME / NEVER USED AIRFLOW)
+docker compose up airflow-init
+
+# Use Local Executor (CelearyExecutor = parrallel tasks accross multiple workers)
+AIRFLOW__CORE__EXECUTOR = LocalExecutor
+Remove all Celary Executor Items and redis dependencies
+remove airflow-worker and flour
+
+
+# Start Airflow (USE FOR ALL PROJECTS LATER)
+docker compose up -d
+
+# Access the UI at http://localhost:8080 — default credentials are airflow / airflow.
+
+# Stop Docker (stops )
+docker compose down
