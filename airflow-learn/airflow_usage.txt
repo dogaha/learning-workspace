@@ -1,0 +1,53 @@
+AIRFLOW SUMMARY
+===============
+
+TASK DEPENDENCIES (>> operator)
+---------------------------------
+Linear chain:         task_a >> task_b >> task_c
+One to many:          task_a >> [task_b, task_c]
+Many to one:          [task_a, task_b] >> task_c
+Many to many:         [task_a, task_b] >> [task_c, task_d]
+Reverse direction:    task_b << task_a
+
+Without branching, all tasks in the list run.
+For conditional routing, use @task.branch to choose which task runs next.
+
+
+CONNECTIONS & HOOKS
+--------------------
+Connections: credentials stored in Airflow UI (Admin > Connections)
+             - Connection Id, Type, Host, Schema, Login, Password, Port
+             - Use host.docker.internal when connecting to local DB from Docker
+
+Hooks: Python classes that use connections to interact with external systems
+
+Example:
+    from airflow.providers.postgres.hooks.postgres import PostgresHook
+
+    @task
+    def query_db():
+        hook = PostgresHook(postgres_conn_id="my_postgres")
+        records = hook.get_records("SELECT * FROM my_table")
+        return records
+
+
+SENSORS
+--------
+Sensors wait for a condition to be met before proceeding.
+Examples: file lands in S3, DB record appears, another DAG finishes.
+
+Modes:
+  poke       - checks every 30-60s, holds worker slot the whole time (default)
+  reschedule - frees worker between checks, better for long waits
+
+Example:
+    from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
+
+    wait_for_file = S3KeySensor(
+        task_id="wait_for_file",
+        bucket_name="my_bucket",
+        bucket_key="data/file.csv",
+        mode="reschedule"
+    )
+
+    wait_for_file >> process_file()

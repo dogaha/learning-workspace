@@ -9,10 +9,11 @@ echo -e "AIRFLOW_UID=$(id -u)" > .env
 docker compose up airflow-init
 
 # Use Local Executor (CelearyExecutor = parrallel tasks accross multiple workers)
+# LOWKEY UNNECESSARY
 AIRFLOW__CORE__EXECUTOR = LocalExecutor
 Remove all Celary Executor Items and redis dependencies
 remove airflow-worker and flour
-
+set AIRFLOW__CORE__LOAD_EXAMPLES to false
 
 # Start Airflow (USE FOR ALL PROJECTS LATER)
 docker compose up -d
@@ -21,3 +22,10 @@ docker compose up -d
 
 # Stop Docker (stops )
 docker compose down
+docker compose down -v // delete volumes with container shutdown
+
+# Airflow Basics
+Airflow is a way to show what tasks run after what
+DAG = Directed Asyclic  Graph
+Task = What to be Executed
+Operator = How to be executed
