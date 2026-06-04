@@ -1,0 +1,28 @@
+Concepts
+- Image — blueprint for a container (the envrionement)
+- Container — running instance of an image
+- Dockerfile — instructions to build an image
+- docker-compose — run and configure multiple containers
+
+Common Commands
+docker build -t name .         # build image
+docker run name                # run container
+docker run -it name bash       # interactive shell
+docker ps                      # list running containers
+docker stop container_id       # stop container
+docker-compose up              # start all services
+docker-compose down            # stop all services
+docker images                  # list images
+docker rmi image_name          # delete image
+
+Dockerfile Commands
+FROM        # base image
+WORKDIR     # working directory inside container
+COPY        # copy files into container
+RUN         # execute command at build time
+CMD         # command to run when container starts
+ENV         # set environment variables
+EXPOSE      # document which port the container uses
+
+
+

@@ -1,3 +1,4 @@
+* USING DOCKER INSTEAD OF VIRTUAL ENVRIONEMENT *
 creation:
 python -m venv .venv
 
