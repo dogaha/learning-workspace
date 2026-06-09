@@ -17,3 +17,6 @@ plugins/
 
 #dbt
 jaffle_shop
+target/
+dbt_packages/
+logs/
