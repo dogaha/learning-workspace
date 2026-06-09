@@ -5,15 +5,14 @@ services:
       - .env
     ports:
       - "5432:5432"
-
   dbt:
     image: ghcr.io/dbt-labs/dbt-postgres:1.8.latest
     env_file:
       - .env
     volumes:
-      - ./dbt_project:/usr/app/dbt
+      - ./project/my_project:/usr/app/dbt
       - ./profiles.yml:/root/.dbt/profiles.yml
     working_dir: /usr/app/dbt
     depends_on:
       - postgres
-    entrypoint: ["tail", "-f", "/dev/null"]  # keeps container alive
+    entrypoint: ["tail", "-f", "/dev/null"]

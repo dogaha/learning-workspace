@@ -1,0 +1,17 @@
+# what are seeds?
+seeds are csv files that can be loaded into a data warehouse
+best used with mostly static databases
+this will create an entire dataset
+
+# how to use seeds
+place csv file with additional data to table
+
+you can reference seeds by doing "... FROM {{ ref("[table name]") }}"
+
+docker compise exec dbt dbt seed 
+    add "--select [filename]" for a specific target
+
+# Analyses folder
+Ad-Hoc SQL (one off, unplanned) queries
+runs sql but does not create an object
+

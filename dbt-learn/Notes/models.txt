@@ -1,0 +1,49 @@
+# what are models
+models are sql code that perform a transformation and output either a view or
+table, this is the appeal of dbt, preforming transformations.
+
+# how to build a model
+write a normal sql query
+SELECT statement will be posted as a view/table
+
+# model modulation
+this is the best practice, when databases are extrememly large this allows for
+scalability and efficiency. Break down a large model into smaller models. You
+reference other models by doing "... FROM {{ ref("[table name]") }}"
+
+EX: 
+Customer stg ──────────────────────┐
+                                    ▼
+Order stg ──────► Orders fact ──► Customer Revenue
+                        ▲
+OrderItems stg ─────────┘
+
+stg = clean raw tables, remove errors
+Order fact = fact table created from joining order stg and orderitems stg
+Customer reveneue created from 
+
+# Schema/Object handling
+Use dbt_project.yml file, models section
+models:
+  [project_name]:
+    [folder_name]:
+      +schema: [schema]
+      +materialization: [type]
+    ...
+
+note that folder_name is a folder within the models folder
++ = default 
+also the defualt schema is already specified in the dbt
+the default materialization is a view
+    Options are view, table, incremental, and ephemeral
+
+To change a specific files schema user
+{{ config(schema='[schema]') }}
+{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    schema='gold'
+) }}
+
+# running models
+docker compose exec dbt dbt run 
