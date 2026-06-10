@@ -1,0 +1,22 @@
+# what are snapshots?
+snapshots are a way to track how rows change over time, SCD2
+SCD Types:
+Type 1 — Overwrite old value, no history kept. Just a regular table update.
+Type 2 — Keep full history, new row added for each change.
+Type 3 — Add a "previous value" column, Only tracks one change back.
+
+# how to use snapshots
+{% snapshot [snapshop name] %}
+
+{{
+    config(
+        target_schema='[snapshop schmea]', #best practice to have snapshop schema
+        unique_key=[id column],
+        strategy='check',
+        check_cols=['party', 'district']
+    )
+}}
+
+select Query
+
+{% endsnapshot %}

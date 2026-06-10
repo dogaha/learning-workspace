@@ -1,9 +1,9 @@
-# what are seeds?
+# what are SEEDS?
 seeds are csv files that can be loaded into a data warehouse
 best used with mostly static databases
 this will create an entire dataset
 
-# how to use seeds
+# how to use SEEDS
 place csv file with additional data to table
 
 you can reference seeds by doing "... FROM {{ ref("[table name]") }}"
@@ -11,7 +11,24 @@ you can reference seeds by doing "... FROM {{ ref("[table name]") }}"
 docker compise exec dbt dbt seed 
     add "--select [filename]" for a specific target
 
-# Analyses folder
+# ANALYSES folder
 Ad-Hoc SQL (one off, unplanned) queries
 runs sql but does not create an object
 
+# SOURCES
+Allow you to declare your raw/ingested tables in a yml file
+By doing this dbt can add it to the lineage graph
+This is the same reason why we use ref instead of the table/view name
+
+# add SOURCES
+within the dbt_project.yml file add
+sources:
+  - name: [name]
+    schema: [schema]
+    tables:
+      - name: [table_name]
+      ...
+  ...
+
+# use SOURCES
+... FROM {{ source( '[source_name]', '[table_name]') }}

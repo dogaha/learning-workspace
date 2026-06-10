@@ -1,0 +1,36 @@
+# what are tests
+Allow you to validate data automatically when you run "dbt test"
+docker compose exec dbt dbt test
+
+# Generic test
+test the file using the dbt_project.yml
+
+models:
+  - name: [test_name]
+    columns:
+      - name: [column_name]
+        tests:
+          - [test]
+          ...
+   ...
+
+tests
+- not_null
+- unique
+- accepted_values:
+    values: [strings, integers, booleans, decimals]
+- relationships 
+    # tests foreign key, value a exists in joined table
+
+# singular tests
+basically a basic query, *file within tests folder
+SELECT ... FROM {{ ref(...) }} WHERE [condition]
+
+# running test
+dbt test
+dbt test --select [test name]
+
+docker compose exec dbt ...
+
+
+

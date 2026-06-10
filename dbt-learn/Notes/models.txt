@@ -34,8 +34,11 @@ models:
 note that folder_name is a folder within the models folder
 + = default 
 also the defualt schema is already specified in the dbt
-the default materialization is a view
-    Options are view, table, incremental, and ephemeral
+4 types:
+view — default, c
+table
+incremental — only processes new/updated rows, best for large tables
+ephemeral — not created in DB at all, referenced by other moodels as a CTE
 
 To change a specific files schema user
 {{ config(schema='[schema]') }}
