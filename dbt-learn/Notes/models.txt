@@ -9,6 +9,7 @@ SELECT statement will be posted as a view/table
 # model modulation
 this is the best practice, when databases are extrememly large this allows for
 scalability and efficiency. Break down a large model into smaller models. You
+
 reference other models by doing "... FROM {{ ref("[table name]") }}"
 
 EX: 

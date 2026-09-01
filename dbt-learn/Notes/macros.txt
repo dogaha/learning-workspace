@@ -1,0 +1,22 @@
+# what are macros
+Macros are reuseable jinja functions, useable in all models
+Macros must have a unique name, file name does not matter
+Best practice one macro per file
+
+EX: 
+macros/cents_to_dollars.sql:
+{% macro cents_to_dollars(column_name) %}
+    ({{ column_name }} / 100.0)
+{% endmacro %}
+
+model:
+select
+    trade_id,
+    {{ cents_to_dollars('amount') }} as amount_dollars
+from {{ source('bronze', 'raw_trades') }}
+
+equivalent logic
+select
+    trade_id,
+    (amount / 100.0) as amount_dollars
+from bronze.raw_trades

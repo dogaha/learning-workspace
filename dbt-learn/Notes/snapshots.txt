@@ -5,18 +5,38 @@ Type 1 — Overwrite old value, no history kept. Just a regular table update.
 Type 2 — Keep full history, new row added for each change.
 Type 3 — Add a "previous value" column, Only tracks one change back.
 
-# how to use snapshots
-{% snapshot [snapshop name] %}
+snapshot automatically creates adds these columns.
+dbt_scd_id — unique id per record version
+dbt_updated_at — when the change was detected
+dbt_valid_from — when this version became active
+dbt_valid_to — when this version expired (null = current)
 
+# how to use snapshots 
+within a snapshots/[snapshop name].sql
+{% snapshot [snapshop name] %}
 {{
     config(
-        target_schema='[snapshop schmea]', #best practice to have snapshop schema
+        target_schema='snapshots', automatically created schema
         unique_key=[id column],
-        strategy='check',
-        check_cols=['party', 'district']
+        strategy=[strategy], 
+        check_cols/updated_at=['party', 'district']
     )
 }}
 
-select Query
+SELECT ... FROM {{ source('souce_name','table_name') }}
 
 {% endsnapshot %}
+
+will add snapshop columns to end of selected columns in query
+
+strategies
+- check 
+check_cols=['SCD column', ...]
+- timestamp (must have an timestamp column)
+updated_at='[timestamp column]'
+
+
+runing snapshop
+dbt snapshop
+docker compose exec dbt dbt snapshop
+

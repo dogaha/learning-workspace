@@ -41,7 +41,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./project/my_project:/usr/app/dbt
+      - ./project:/usr/app/dbt
       - ./profiles.yml:/root/.dbt/profiles.yml
     working_dir: /usr/app/dbt
     depends_on:
@@ -73,6 +73,7 @@ docker compose up -d
 # initalize
 docker compose exec dbt bash
 dbt init my_project --skip-profile-setup
+
 
 # remove the example models
 rm -rf project/my_project/models/example

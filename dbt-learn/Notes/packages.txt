@@ -1,0 +1,30 @@
+# what are packagaes
+similar to python libraries but with jinja
+
+# package usages
+create packages.tml in project root (with dbt_project.yml)
+packages:
+  - package: [package]
+    version: [version]
+...
+
+install packages
+dbt deps
+docker compose exec dbt dbt deps
+
+# dbt_utils
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.1.1
+
+
+dbt_utils with Test
+- name: trade_id
+  tests:
+    - dbt_utils.not_empty_string
+    - dbt_utils.expression_is_true:
+        expression: "amount > 0"
+
+dbt_ utils with macros
+-- generate a surrogate key from multiple columns
+{{ dbt_utils.generate_surrogate_key(['trade_id', 'politician_id']) }}

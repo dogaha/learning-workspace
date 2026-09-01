@@ -1,0 +1,52 @@
+IAM = Identity and Access Management
+User attempts to perform Actions
+Autoriazation to performa action depends on policy
+
+EX:
+User does action on lambda
+you need a policy document attached to User
+- Json File:
+    Version
+    Statement
+        Sid
+        Effect
+        Actions
+    Resource
+
+- You can also limit what resources you can access
+
+implicit deny = not given explicit access so deny
+explicit deny = explicitly state what to deny access to
+
+This is done through ...
+- aws console
+- aws CLI
+- aws SDK
+
+Groups
+- Default policy for all people apart of said groupo
+EX: Admins, Developers, Testers
+
+Roles
+policies for users and applications, used for temporary credentials 
+
+Trust Relationship
+want to share a table with another account
+- Account 1 creates a read only role 
+- Account 1 and Account 2 create a Trust Relationship
+- Account 1 give Account 2 access to assumeRole
+
+Tips
+- Protect Root Account, is the master acccount
+    dont use root account
+- Explicit Deny > Allow
+- Use Least Privilege
+- Use Policy Simulator
+
+
+How To use on AWS console
+- go to IAM 
+- go to IAM users to create/edit User
+- Go to IAM groups to create/edit Groups
+- Go to IAM roles to create role
+- Go to policy to create policy

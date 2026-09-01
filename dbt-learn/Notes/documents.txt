@@ -1,0 +1,27 @@
+# what is documntation
+Documentation lets you describe your models, columns, and sources in yml, 
+then generate a browsable site.
+
+# using documntation
+simply add tag "description" under section
+
+EX:
+models:
+  - name: stg_trades
+    description: "Cleaned and standardized trades from Capitol Trades scraper"
+    columns:
+      - name: trade_id
+        description: "Unique identifier for each trade"
+      - name: ticker
+        description: "Stock ticker symbol"
+sources:
+  - name: bronze
+    description: "Raw data written by scrapers"
+    tables:
+      - name: raw_trades
+        description: "Raw Capitol Trades data"
+
+dbt docs generate
+dbt docs serve
+Then open http://localhost:8080 in your browser 
+— you get a full lineage graph and searchable docs site.

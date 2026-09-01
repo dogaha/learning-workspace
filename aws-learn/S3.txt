@@ -1,0 +1,14 @@
+S3 = Simple Storage Service
+
+Create Bucket
+- Name
+- Location
+- Block Public Access
+- Bucket Versioning
+- Tags
+- Encryption
+
+objects: create folders
+- think of folders as prefixes
+- S3 is flat
+

@@ -27,7 +27,6 @@ logger = logging.getLogger(__name__) #create new logger, save to diff file
 handler = logging.FileHandler('logging/test.log')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
-
 logger.addHandler(handler)
 
 logger.info("test the custom logger")
