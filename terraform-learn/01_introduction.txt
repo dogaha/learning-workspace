@@ -1,0 +1,46 @@
+1. What is Terraform
+- Terraform is an Infrastrucutre as Code tool; it allows you to 
+    write declaritive config files that describe the secrices you 
+    want to use.
+- Think of it like docker's compose file but for cloud services
+
+2. Benefits
+- Plan before Apply: you can see exactly what you do before running
+- State tracking: maps your configs to real resource IDs
+- Reproducibility: Allows you to reproduce the same project
+- Readability: the files themselves are readable
+- Dependecy resolution: Services are created in correct order
+
+3. Workflow
+- WRITE CONFIG describing resource (.tf file)
+- INTIIALIZE workspace to download provider plugins
+- recursive
+    - VISUALIZE changes
+    - EXECUTE changes
+    - SAVE new state file (version control)
+- DESTROY to prevent charges between sessions
+
+4. Commands
+- terraform init
+    initializes working directory
+- terraform plan
+    visualize changes made/added (~ update, - remove, + create)
+- terraform apply
+    executes changes planned
+- terraform destroy
+    tears down and deletes all infrastrucutre managed by current 
+    terraform
+- terraform show
+    Returns human readable desc of current infrastrucutre
+- terraform state list
+    Lists every resource tracked by terraform in state file
+
+5. States
+- terraform needs a way to track the resources, this is done with 
+    state files
+- remote state files are files stored in a S3 instance
+- local state files are stored on the laptop itself called .tfstate
+
+6. Extra
+- terraform will combine all tf files into one big file
+- terraform will not do a recursive search (only .tf in directory)
