@@ -78,4 +78,66 @@ resource "aws_route_table_association" "private" {
 }
 
 - Inbound (resouces requested by external): 
-Set up an Application load balencer
+Set up an Application load balancer
+
+4. EC2 Security group
+resource "aws_security_group" "ec2" {
+  name        = "motorsport-ec2-sg"
+  description = "Security group for EC2 instance (Kafka, Debezium, generators)"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "SSH from my IP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${var.my_ip}/32"]
+  }
+
+  egress {
+    description = "Allow all outbound"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+4.5 Variable
+It is bad practice to have your ip hardcoded so i use an env var
+it is in a tfvars file and i set up variables.tf file to get it
+variable "my_ip" {
+  description = "IP address allowed to SSH into EC2"
+  type        = string
+  sensitive   = true
+}
+
+- Ingress (inbound) = Who can call upon ec2 | only me
+- egress (outbound) = who can ec2 call upon | everyone
+- port 22 = ssh ports
+
+5. RDS security group
+resource "aws_security_group" "rds" {
+  name        = "motorsport-rds-sg"
+  description = "Security group for RDS Postgres - EC2 access only"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description     = "Postgres from EC2 security group"
+    from_port       = 5432
+    to_port         = 5432
+    protocol        = "tcp"
+    security_groups = [aws_security_group.ec2.id]
+  }
+
+  egress {
+    description = "Allow all outbound"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+- ingress: only allow EC2 to request from it
+- egress: allow rds to request from everybody
