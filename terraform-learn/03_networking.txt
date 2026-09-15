@@ -1,0 +1,81 @@
+Networking is needed to set up certain AWS services
+  EC2: Subnet, Route tables, Security group
+  RDS: Subnet group spanning >= 2 availability_zone
+
+
+1. Set up VPC
+resource "aws_vpc" "main" { cidr_block = "10.0.0.0/16" }
+- Creates a virtual network for 10.0.X.X
+
+2. Set up public and private subnets
+resource "aws_subnet" "public" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-east-2a"
+  map_public_ip_on_launch = true
+}
+
+resource "aws_subnet" "private" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "us-east-2a"
+}
+
+- VPC id = the main vpc
+- cidr_block = Ip address range
+- availability_zone = 'location'
+
+
+3. Routing over the internet
+resource "aws_internet_gateway" "main" { vpc_id = aws_vpc.main.id }
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
+}
+
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.public.id
+}
+
+- aws_internet gateway = allows vpc to communicate over aws_internet
+- aws_route_table = routes vpc to intenet gateway
+- aws_route_table_association = associate route table with public subnet
+
+- Note that the private subnet is not connected becase we designed it
+  it only interact within itself, RDS table and EC2
+- To allow the private subnet to talk to others do this
+- Outbound (resources request extternal):
+    create static ip for nat gateway
+    deploy nat to public subnet
+    create route table for private
+    connect private to route
+resource "aws_eip" "nat" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "main" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public.id # Must be the public subnet!
+}
+
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.main.id # Sends internet traffic to the NAT
+  }
+}
+
+resource "aws_route_table_association" "private" {
+  subnet_id      = aws_subnet.private.id
+  route_table_id = aws_route_table.private.id
+}
+
+- Inbound (resouces requested by external): 
+Set up an Application load balencer
