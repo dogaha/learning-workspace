@@ -1,0 +1,120 @@
+1. EC2 Access
+resource "aws_iam_role" "ec2" {
+    name = "motorsport-ec2-role"
+
+    assume_role_policy = jsonencode({
+        Version = "2012-10-17"
+        Statement = [
+            {
+                Action = "sts:AssumeRole"
+                Effect = "Allow"
+                Principal = {
+                    Service = "ec2.amazonaws.com"
+                }
+            }
+        ]
+    })
+
+    tags = {
+        Project     = "motorsport"
+        Environment = "dev"
+    }
+}
+
+- ec2 main role, allows to be asummed
+
+resource "aws_iam_role_policy" "ec2_s3" {
+    name = "motorsport-ec2-s3-access"
+    role = aws_iam_role.ec2.id
+
+    policy = jsonencode({
+        Version = "2012-10-17"
+        Statement = [
+            {
+                Effect = "Allow"
+                Action = [
+                    "s3:GetObject",
+                    "s3:PutObject",
+                    "s3:ListBucket"
+                ]
+                Resource = [
+                    "arn:aws:s3:::motorsport-data-lake",
+                    "arn:aws:s3:::motorsport-data-lake/*"
+                ]
+            }
+        ]
+    })
+}
+
+- Policy relating to S3 access
+
+resource "aws_iam_role_policy" "ec2_iam" {
+    role = aws_iam_role.ec2.id
+
+    policy = jsonencode({
+        Version = "2012-10-17"
+        Statement = [
+            {
+                Effect = "Allow"
+                Action = [
+                    "secretsmanager:GetSecretValue"
+                ]
+                Resource = aws_secretsmanager_secret.rds_credentials.arn
+            }
+        ]
+    })
+}
+
+- Policy for getting secrets
+
+resource "aws_iam_instance_profile" "ec2" {
+    name = "motorsport-ec2-profile"
+    role = aws_iam_role.ec2.name
+
+    tags = {
+        Project     = "motorsport"
+        Environment = "dev"
+    }
+}
+
+- apply policies to a profile
+
+2. Get Keypair 
+- download access keypair from aws 
+- save file @ "~/.ssh/"
+- gets keypair from local machine
+resource "aws_key_pair" "main" {
+    key_name    = "motorsport-ec2-key"
+    public_key  = file("~/.ssh/motorsport-ec2.pub")
+}
+
+
+3. Create instance
+-
+resource "aws_instance" "main" {
+    ami                         = "ami-0e508bdf5a1337e6b"
+    instance_type               = "m7i-flex.large"
+    subnet_id                   = aws_subnet.public.id
+    vpc_security_group_ids      = [aws_security_group.ec2.id]
+    key_name                    = aws_key_pair.main.key_name
+    iam_instance_profile        = aws_iam_instance_profile.ec2.name
+    user_data_replace_on_change = true
+    
+    user_data = <<-EOF
+        #!/bin/bash
+        dnf update -y
+        dnf install -y docker
+        systemctl enable docker
+        systemctl start docker
+        usermod -aG docker ec2-user
+    EOF
+}
+
+- ami = version of ec2 (bare bones linux)
+- instance_type = how much processing power allocated
+- subnet_id = where EC2 is running on (public for us)
+- vpc_security_group_ids = the security groups attached to ec2
+- key_name = the name of the keypair
+- iam_instance_profile = the access control
+- user_data_replace_on_change = auto update when changes made
+- user_data = setup for ec2
