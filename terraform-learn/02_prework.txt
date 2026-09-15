@@ -1,0 +1,32 @@
+1. Create Backend
+- Specify where to place the state 
+- I did the remote state so, we specify using
+
+terraform {
+  backend "s3" {
+    bucket       = "motorsport-terraform-state"
+    key          = "main/terraform.tfstate"
+    region       = "us-east-1"
+    use_lockfile = true
+  }
+}
+- bucket = location
+- key = where to store within bucket
+- region = bucket location
+- use_lockfile = enables native state locking
+  Prevents two people from updating the state file at the same time
+
+2. Create provider
+- Sepcify provider as it is not specified in this folder
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-2"
+}

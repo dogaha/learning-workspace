@@ -1,0 +1,60 @@
+1. Install Terraform and AWS CLI
+- For windows: 
+    winget install HashiCorp.Terraform
+    winget install Amazon.AWSCLI
+
+
+2. Create IAM user for Terraform
+- AWS Console -> IAM -> Users -> Create User
+- User Specs
+    - Skip Console access (password/login)
+    - Create a policy involving services to be used
+- User policy
+    - For now complete access to all services is ok, can reduce later
+    - for IAM resources
+      "arn:aws:{service}::${data.aws_caller_identity.current.account_id}:role/{project code name}-*"
+    - To limit instances you can access you can use conditions
+    - See aws-learn/IAM for more
+- Create Access key
+    - terraform user -> Security credentials -> Access Keys
+    - use CLI key
+    - Save key (shown only once)
+
+3. Configure AWS CLI credentials
+- aws configure (within local directory terminal)
+    will ask for ID, Access Key, Region, Ouput format
+- aws sts get-caller-identity
+    verify config works
+
+4. Bootstrap
+- create infra folder (contains services)
+- create infra/bootstrap
+- create main.tf (the start file)
+    Specify Terraform required providers
+    Specify provider
+    Create states bucket (within S3)
+    apply encryption
+    apply versioning
+    apply public access control
+
+6. Run terraform 
+- cd to bootstrap
+- terraform init (if first time)
+- terraform plan
+- terraform apply
+
+7. .gitignore
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
+7. Terraform env files
