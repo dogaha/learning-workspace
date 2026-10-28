@@ -1,3 +1,0 @@
-* Note that these are based in python
-
-1. Hashmaps
