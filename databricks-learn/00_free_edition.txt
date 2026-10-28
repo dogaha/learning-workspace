@@ -1,0 +1,6 @@
+1. databricks usage for my project
+- Connect S3 and Bronze layer of delta lake
+- pyspark for Silver layer Transformations
+- Connect dbt
+- apply dbt transformations to logical
+- use airflow to orchestrate 
