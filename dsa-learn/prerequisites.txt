@@ -1,0 +1,90 @@
+1. Arrays
+An ordered collection of elements
+
+Allow for constant-time access by index
+EX: arr[4] => O(1) 
+
+Insertion and Deletion takes O(n) because you must shift the other elements
+
+Time Complexity
+- Access: O(1)
+- Append: O(1)
+- Insert: O(n)
+- Dekete: O(n)
+
+Usecase examples:
+- Traverse a structure in ordered fashion
+- Access specific indicies
+- Compare elements at both ends
+- Sliding Windows
+- Prefix Sums
+
+2. Strings
+arrays of characters that are immuteable.
+immuteable means that when you concatenate / alter a string it creates a new string
+
+EX: O(n^2)
+result = ""
+for char in chars:
+    result+= char
+# this produces o(n^2) because it creates a whole new string when adding
+
+EX: O(n)
+result = []
+for char in chars:
+    result.append(char)
+return "".join(result)
+
+Usecase examples:
+- Find the loges substring without repeating characters
+- check if two strings are anagrams
+- return all substrings that match a pattern
+- * note most use two pointer / sliding window
+
+3. Sets
+A collection of unique elements.
+
+allows for checking values in constant time
+
+EX:
+nums = [...]
+seen = set(nums)
+x in seen => O(n)
+
+usecase examples:
+- uniqueness
+- existance
+- fast membership checks
+- sliding windows
+
+4. Control Flow and Looping
+Every question has some type of ...
+- loop
+- condition
+- updated variable
+
+Be comfortable with ...
+- for in range(n)
+- for in arr
+- while cond 
+- if else elif
+- break continue
+
+5. Efficiency
+Big o Notation is how we measure the efficiency of a algo / program
+- n! # biggest
+- 2^n
+- n^2
+- nlogn
+- n
+- logn
+- 1 # fastest
+
+O(1) = constant search
+O(log(n)) = division 
+O(n) = test every item once
+O(nlogn) = sorting
+O(n^2) = nested loops, usually too slow
+
+10^4 inputs ~ n^2 can get away with it 
+10^5 inputs ~ 10^5
