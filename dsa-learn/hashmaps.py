@@ -42,8 +42,8 @@ def two_sum(nums:list,target:int) -> list:
     # target - value = value in list
     my_map = {}
     for i,v in enumerate(nums):
-        if target - v in my_map:
-            return [my_map[target-v],i]
-        else:
-            my_map[target-v] = i
-    return None
+        complement = target - v
+        if complement in my_map:
+            return [my_map[complement],i]
+        my_map[complement] = i
+    return []
