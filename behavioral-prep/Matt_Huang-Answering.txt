@@ -52,3 +52,43 @@
     worked at UPS, hard work (show), noticed co-worker stealing hours, at the time didnt see problem, However realized after talking
     with brother that its the little things that reflect us, so broght it to manager, and they implemented a better time management system.
     Learned that the little things that people dont see that define us
+
+-- Put it in practice 
+1. Brain Dump
+Leadership / Initiative:
+- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him
+- Tutored a strugglin classmate before every in class quizes / exams (linear algebra)
+
+Resilience:
+- Motorsport Telemetry Lakehouse Project Encountured roadblocks (wasted my time doing something)
+    
+Teamwork:
+- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him
+- worked with a friend to create a video game 
+- Built a turtle basking area for aunt (who is a project maneger, but was very young and did not really learn anything)
+
+
+Influencing / Persuasion:
+- Convinced friend to use AI to accelerate his learning (he spends hours on HW)
+- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him
+
+Ethical / Moral Conflict:
+- Found out my little cousin was giving robux to a stranger online, didnt want to get her in trouble
+- HELP with this one because the student ethics dillemas i usually turn a blind eye or assist
+
+Mistake:
+- Motorsport Telemetry Lakehouse Project: Failed to complete what i really wanted to do
+- First Data engineeering project: failed to accomplish goal of finding teh "best" trader in congress
+
+Failure owned up to:
+- I accidentally deleted all my dads pictures he left on a flash drive, 
+
+A disagreement with someone adn how it was resolved
+- Video game dispute between team members (who was at fault and who was not), resolved with self reflection / time / and speaking
+- Trying to convince my friend to use a real database instead of SQL-Lite (i ended up being convinced that SQL-Lite was enough)
+
+Handling tight deadlines or completitng priorities
+- Compromises in lakehouse project
+
+Learning asomething hard quickly
+- Learned Several new tools in Lakehouse project (finished in a month)
