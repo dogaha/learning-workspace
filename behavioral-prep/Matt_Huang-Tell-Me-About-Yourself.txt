@@ -1,3 +1,6 @@
+================================================================================
+Video Notes
+================================================================================
 1. Why the 2-minute story?
 - 1st impression / sets the tone
     The first time you will be talking, first impression of who you are.
@@ -37,4 +40,34 @@
     you job is to make them believe that you can do it.
 - Actionable steps
     Record yourself.
-    
+
+================================================================================
+Put it in practice
+================================================================================
+1. Content
+Origin:
+- My name Ethan
+- Senior CS student at UHCL
+Experience 1:
+- Was bored of the games on roblox and decided i wanted to create my own game
+- This was the start of my journey in tech
+Experience 2:
+- I knew i wanted a career in this field, so i began researching
+- I Tried multiple career pathes like website development, didnt enjoy it
+- Discovered Data engineering and loved how straight forward it was
+Experience 3:
+- I started by learning SQL, Python, and Data engineering concepts
+- Began with a basic webscrapper and SQL warehouse 
+- Leveled up to expanding my techstack to DBT, docker, and Airflow
+- Leveled up again  expanding to AWS, kafka, and databricks
+Today:
+- All that work lead me here
+- and i am excited to interview with yall
+
+
+# AI Recomendation
+Origin: “I’m Ethan, a senior CS student at UHCL graduating May 2027.”
+Exp 1: “I got into tech building a Roblox game with a friend because I was bored of playing games.” (One detail, one sentence.)
+Pivot + Exp 2: “I wanted to make it a career, so I tried [web dev], but what I really liked was [true reason], which led me to data engineering.”
+Exp 3: “I started with [SQL and a scraper], then built [Lakehouse project: one sentence on what it does and that you shipped it], using [2-3 tools].”
+Today: “I’m excited about the Associate Data Engineer role because [one IBM-specific reason], and I’d love to [what you want to do there].”
