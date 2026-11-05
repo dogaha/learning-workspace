@@ -1,3 +1,6 @@
+================================================================================
+Video Notes
+================================================================================
 1. What is a Behavioral Interview
 - A question to demonstrate a certain quality
 
@@ -53,42 +56,177 @@
     with brother that its the little things that reflect us, so broght it to manager, and they implemented a better time management system.
     Learned that the little things that people dont see that define us
 
--- Put it in practice 
+================================================================================
+Put it in practice 
+================================================================================
 1. Brain Dump
 Leadership / Initiative:
-- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him
-- Tutored a strugglin classmate before every in class quizes / exams (linear algebra)
+- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him--
+- Tutored a strugglin classmate before every in class quizes / exams (linear algebra)--
 
 Resilience:
-- Motorsport Telemetry Lakehouse Project Encountured roadblocks (wasted my time doing something)
+- Motorsport Telemetry Lakehouse Project Encountured roadblocks (wasted my time doing something)--
     
 Teamwork:
-- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him
-- worked with a friend to create a video game 
+- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him--
+- worked with a friend to create a video game --
 - Built a turtle basking area for aunt (who is a project maneger, but was very young and did not really learn anything)
 
 
 Influencing / Persuasion:
 - Convinced friend to use AI to accelerate his learning (he spends hours on HW)
-- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him
+- Took The initiative to help my friend take his first step towards his career by agreeing to do a project with him --
 
 Ethical / Moral Conflict:
-- Found out my little cousin was giving robux to a stranger online, didnt want to get her in trouble
+- Found out my little cousin was giving robux to a stranger online, didnt want to get her in trouble --
 - HELP with this one because the student ethics dillemas i usually turn a blind eye or assist
 
 Mistake:
-- Motorsport Telemetry Lakehouse Project: Failed to complete what i really wanted to do
-- First Data engineeering project: failed to accomplish goal of finding teh "best" trader in congress
+- Motorsport Telemetry Lakehouse Project: Failed to complete what i really wanted to do --
+- First Data engineeering project: failed to accomplish goal of finding teh "best" trader in congress --
 
 Failure owned up to:
 - I accidentally deleted all my dads pictures he left on a flash drive, 
 
 A disagreement with someone adn how it was resolved
 - Video game dispute between team members (who was at fault and who was not), resolved with self reflection / time / and speaking
-- Trying to convince my friend to use a real database instead of SQL-Lite (i ended up being convinced that SQL-Lite was enough)
+- Trying to convince my friend to use a real database instead of SQL-Lite (i ended up being convinced that SQL-Lite was enough) --
 
 Handling tight deadlines or completitng priorities
 - Compromises in lakehouse project
 
 Learning asomething hard quickly
 - Learned Several new tools in Lakehouse project (finished in a month)
+
+2. Craft your arsenal
+Friend First Project
+- Situation:    My childhood firend is entering his junior year of college and 
+                has no career focused projects.
+- Task:         I put it upon myself to do a project with him, as it whould help
+                me with my teamwork skills and would help him take his first step
+- Action:       I met up with him and we began brainstorming ideas.
+                I was the main voice, so i asked him questions to gauge what he
+                wants to do: found out he is wants a career in cyber security
+                I did research on common topics and provided him some options,
+                we ended up deciding on the topic of phisihing
+- Result:       We are now in the action phase, asked chatgpt for a design,
+                because i am not really knowledgeable about cybersecurity projects,
+- Lesson:       Learned that sometimes it takes someone to push you to take a step
+                to start something.
+
+Tutored Friend
+- Situation:    Linear algebra, notoriously hard professor (hard tests and 
+                diffcult to follow lectures). A class mate of mine (future good 
+                friend) is struggling (failed first quiz).
+- Task:         I noticed that he was struggling and told him that i could tutor
+                him
+- Action:       Before every quiz / exam, I would go over the notes with him,
+                going over every example question
+- Result:       His grades did improve, and he did pass the class
+- Lesson:       Tutoring not only helps ther person being tutored but also helps
+                the tutor, as teaching enforces things you learned.
+
+Motorsport Telemetry Lakehouse EC2 Backtrack:
+- Situation:    My project is due on a self imposed deadline of the end of the
+                month. We are very close to the deadline
+- Task:         I needed to allow my EC2 instance to allow eggress access to 
+                databricks because i was hosting kafka on it.
+                The problem was that i did not know how to connect it to
+                databricks with Serverless compute.
+- Action:       I consulted with my AI assitant for this project (claude) on my 
+                options and all the options seemed to be a dead end,
+                So i switched tools, i added Confluent to the techstack and was
+                able to get it up and running with the help of AI
+- Result:       I was able to read kafka topics from Databricks and was able to
+                read from RDS
+- Lesson:       Sometimes the answer you have to backtrack when your solution 
+                does not work.
+
+Motorsport Telemetry Lakehouse Compromises to reach deadline:
+- Situation:    My project is due on a self imposed deadline of the end of the
+                month. We are very close to the deadline
+- Task:         I was very behind, had a short amount of time to complete two
+                features, CDC and realtime ingestion
+- Action:       I decided to not proceed with realtime ingestion, the main reason
+                is not just time but also because the data made no sense. I 
+                wanted to use the data to track live errors (ex if x event occurs
+                y times within z time) and the live data just would not make sense
+- Result:       I was able to complete the project on time, but not without regret
+- Lesson:       Preperation is important, you  should have a reason for everyting
+                and should focus on the result more than the process
+
+Teamwork on Roblox
+- Situation:    Senior year of highschool, i am bored, and decided to build a
+                roblox game with my friend.
+- Task:         We needed to generate a concept, design the map, and divide The
+                work between eachother.
+- Action:       We decided that we would work together by demand, in the sense
+                that we would both do programming and design work based on what
+                was needed (Mainly i was left with programming because i knew
+                the language better)
+- Result:       We failed to pulish our first game, and got very close to
+                finishing the last game. We really worked alot initially but
+                lost interest as time went on.
+- Lesson:       Learned that coming together to create a design document would
+                have solved several of our problem, the main reason why i believe
+                we failed to finish / publish is because of a lack of focus /
+                direction, as well as a belief that the game would not be successful
+
+Database Choice
+- Situation:    Me and friend casually talking about what his club tasked him,
+                he is apart of an aerospace club and he is tasked with creating
+                the ground station system.
+- Task:         His task involves extracting data from radio waves live from the
+                rocket, wants to use SQL-Lite as a database, and i disagree and
+                advise him to use a "real" DBMS like postgres.
+- Action:       I Try to convince him to use postgres, because it is easier to
+                analyze data from DBMS and also sets up a dedicated database for
+                the team, as the data is currently just sitting in a single file.
+- Result:       I Fail to convince, because he sees postgres as too much for the
+                scope of the team. Beacuse the team logs the files but does not
+                actually analyze the data gathered. Additionally, the he is not
+                exactly performing analysis on the data itself, just needs a way
+                to store data.
+- Lesson:       learned that understanding the objective of task is important
+                before implementing tech solutions
+
+Database Choice
+- Situation:    Me and friend casually talking about what his club tasked him,
+                he is apart of an aerospace club and he is tasked with creating
+                the ground station system.
+- Task:         His task involves extracting data from radio waves live from the
+                rocket, wants to use SQL-Lite as a database, and i disagree and
+                advise him to use a "real" DBMS like postgres.
+- Action:       I Try to convince him to use postgres, because it is easier to
+                analyze data from DBMS and also sets up a dedicated database for
+                the team, as the data is currently just sitting in a single file.
+- Result:       I Fail to convince, because he sees postgres as too much for the
+                scope of the team. Beacuse the team logs the files but does not
+                actually analyze the data gathered. Additionally, the he is not
+                exactly performing analysis on the data itself, just needs a way
+                to store data.
+- Lesson:       learned that understanding the objective of task is important
+                before implementing tech solutions/
+
+First Data engineering project
+- Situation:    I just finished watching an 30hr tutoral about SQL and decided 
+                to do my first project inspired on the sample design provied in 
+                the tutoral (SQL datawarehouse)
+- TasK:         I decide to do a project to find out who performs the best in
+                the stock market, aprart of the govenrment
+- Action:       I create the webscrapper to ingest the data, and use sql to
+                clean the data. However i get stuck, how exactly do i determine
+                who is the "best"
+- Result:       I do data modeling and change the project goal to just the
+                architecture.
+- Lesson:       Look at the data you have and make sure it can answer the
+                question
+
+Cousin Situation
+- Situation:    Found my cousin sending in-game currency from real money to a 
+                stranger
+- Task:         I wanted to stop her, but know she would not listen to me, and 
+- Action:       I told her mom what was happening
+- Result:       She was corrected but not "banned"
+- Lesson:       Don't turn a blind eye to something that looks "little", as it
+                could turn into bad habits into the future.
